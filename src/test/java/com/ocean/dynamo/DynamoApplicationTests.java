@@ -1,10 +1,10 @@
-package com.golden.experience;
+package com.ocean.dynamo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ExperienceApplicationTests {
+class DynamoApplicationTests {
 
     @Test
     void contextLoads() {

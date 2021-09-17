@@ -1,13 +1,13 @@
-package com.golden.experience;
+package com.ocean.dynamo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExperienceApplication {
+public class DynamoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExperienceApplication.class, args);
+        SpringApplication.run(DynamoApplication.class, args);
     }
 
 }
