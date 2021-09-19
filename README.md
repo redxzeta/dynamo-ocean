@@ -50,6 +50,12 @@ List Tables
 aws dynamodb list-tables --endpoint-url http://localhost:8000
 ```
 
+Delete Table
+
+```bash
+aws dynamodb delete-table --table-name Stands --endpoint-url http://localhost:8000
+```
+
 Start the server
 
 ```bash
