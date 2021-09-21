@@ -1,5 +1,6 @@
 package com.ocean.dynamo.controller;
 
+import com.ocean.dynamo.dtos.StandDTO;
 import com.ocean.dynamo.entity.Stands;
 import com.ocean.dynamo.repo.StandsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,16 @@ public class StandController {
     private StandsRepo standsRepo;
 
     @PostMapping
-    public Stands save(@RequestBody Stands stands) {
-        return standsRepo.save(stands);
+    public Stands save(@RequestBody StandDTO standDTO) {
+        Stands userStand = new Stands().dtoToEntity(standDTO);
+        Stands savedStand = standsRepo.save(userStand);
+        System.out.println(savedStand.toString());
+        return savedStand;
     }
 
     @GetMapping("/{id}")
     public Stands findById(@PathVariable(value = "id") String id) {
+        System.out.println(standsRepo.findById(id).toString());
         return standsRepo.findById(id);
     }
 
@@ -29,8 +34,12 @@ public class StandController {
     }
 
     @PutMapping("/{id}")
-    public String update(@PathVariable(value = "id") String id, @RequestBody Stands stands) {
-        return standsRepo.update(id, stands);
+    public String update(@PathVariable(value = "id") String id, @RequestBody StandDTO standDTO) {
+        Stands currentStand = standsRepo.findById(id);
+        currentStand.setName(standDTO.getName());
+        currentStand.setAbility(standDTO.getAbility());
+        currentStand.setPart(standDTO.getPart());
+        return standsRepo.update(id, currentStand);
     }
 
     @DeleteMapping("/{id}")
