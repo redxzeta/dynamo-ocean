@@ -41,8 +41,11 @@ public class StandsRepo {
         return id;
     }
 
-    public String delete(String id) {
-        dynamoDBMapper.delete(id);
+    public String delete(String id, int part) {
+        Stands deleteStand = new Stands();
+        deleteStand.setId(id);
+        deleteStand.setPart(part);
+        dynamoDBMapper.delete(deleteStand);
         return "Deleted id";
     }
 }

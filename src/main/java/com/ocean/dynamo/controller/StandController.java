@@ -33,7 +33,7 @@ public class StandController {
         return standsRepo.findAll();
     }
 
-    @PutMapping("{part}/{id}")
+    @PutMapping("/{id}")
     public String update(@PathVariable(value = "id") String id, @RequestBody StandDTO standDTO) {
         Stands currentStand = standsRepo.findById(id, standDTO.getPart());
         currentStand.setName(standDTO.getName());
@@ -42,8 +42,8 @@ public class StandController {
         return standsRepo.update(id, currentStand);
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable(value = "id") String id) {
-        return standsRepo.delete(id);
+    @DeleteMapping("{part}/{id}")
+    public String delete(@PathVariable(value = "id") String id, @PathVariable(value = "part") int part) {
+        return standsRepo.delete(id, part);
     }
 }
