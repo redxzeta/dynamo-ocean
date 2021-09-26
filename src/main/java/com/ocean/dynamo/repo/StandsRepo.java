@@ -22,8 +22,9 @@ public class StandsRepo {
         return stands;
     }
 
-    public Stands findById(String id) {
-        return dynamoDBMapper.load(Stands.class, id);
+    public Stands findById(String id, int part) {
+        System.out.println(id);
+        return dynamoDBMapper.load(Stands.class, id, part);
     }
 
     public List<Stands> findAll() {

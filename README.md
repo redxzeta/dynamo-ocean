@@ -44,9 +44,10 @@ Create a table
 aws dynamodb create-table \
 --table-name Stands \
 --attribute-definitions \
-AttributeName=name,AttributeType=S \
+AttributeName=id,AttributeType=S \
 AttributeName=part,AttributeType=N \
---key-schema AttributeName=name,KeyType=HASH AttributeName=part,KeyType=RANGE \
+--key-schema AttributeName=id,KeyType=HASH \
+AttributeName=part,KeyType=RANGE \
 --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost:8000
 ```
 

@@ -22,10 +22,10 @@ public class StandController {
         return savedStand;
     }
 
-    @GetMapping("/{id}")
-    public Stands findById(@PathVariable(value = "id") String id) {
-        System.out.println(standsRepo.findById(id).toString());
-        return standsRepo.findById(id);
+    @GetMapping("{part}/{id}")
+    public Stands findById(@PathVariable(value = "id") String id, @PathVariable(value = "part") int part) {
+
+        return standsRepo.findById(id, part);
     }
 
     @GetMapping
@@ -33,9 +33,9 @@ public class StandController {
         return standsRepo.findAll();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{part}/{id}")
     public String update(@PathVariable(value = "id") String id, @RequestBody StandDTO standDTO) {
-        Stands currentStand = standsRepo.findById(id);
+        Stands currentStand = standsRepo.findById(id, standDTO.getPart());
         currentStand.setName(standDTO.getName());
         currentStand.setAbility(standDTO.getAbility());
         currentStand.setPart(standDTO.getPart());
